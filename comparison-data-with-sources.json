@@ -1,0 +1,145 @@
+{
+  "lastUpdated": "2026-01-28",
+  "version": "1.0.1",
+  "platforms": {
+    "glean": {
+      "name": "Glean",
+      "color": "#6366f1",
+      "docsBaseUrl": "https://docs.glean.com/connectors/native/servicenow"
+    },
+    "google": {
+      "name": "Google Agentspace",
+      "color": "#34a853",
+      "docsBaseUrl": "https://docs.cloud.google.com/agentspace/docs"
+    },
+    "microsoft": {
+      "name": "Microsoft Copilot",
+      "color": "#0078d4",
+      "docsBaseUrl": "https://learn.microsoft.com/en-us/microsoftsearch"
+    }
+  },
+  "sources": {
+    "glean": {
+      "knowledgeArticles": {
+        "snippet": "The ServiceNow connector for Glean allows Glean to fetch and index content from Knowledge Articles with metadata including creation details, workflow states, and custom fields",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "serviceCatalog": {
+        "snippet": "The ServiceNow connector allows Glean to fetch and index Service Catalog items with titles, descriptions, and category organization",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "tickets": {
+        "snippet": "ITSM incidents with ticket metadata (numbers, descriptions, states, priorities) are supported with additional permissions",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "newsArticles": {
+        "snippet": "News articles via Content Publishing (titles, headlines, content, publish dates) are indexed",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "businessApplications": {
+        "snippet": "APM Business Applications and SPM demands, epics, and projects are supported",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "oauth": {
+        "snippet": "Glean requires authentication by utilizing a dedicated Service Account and OAuth Application",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "queryTimeEnforcement": {
+        "snippet": "Glean understands all user access permissions and strictly enforces them at the time of the query, ensuring that users cannot see results to which they do not have access",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "advancedUserCriteria": {
+        "snippet": "Full support via user_criteria_admin role for advanced script-based user criteria",
+        "url": "https://docs.glean.com/connectors/native/servicenow/about"
+      },
+      "aiAgents": {
+        "snippet": "Configurable AI Agents within Glean support real-world customer service scenarios—such as summarizing tickets, recommending next steps, drafting responses, and creating knowledge base articles",
+        "url": "https://www.glean.com/agents/servicenow"
+      },
+      "ticketSummarization": {
+        "snippet": "Resolve tickets sooner by quickly diagnosing issues with instant case overviews and recommended actions",
+        "url": "https://www.glean.com/agents/servicenow"
+      },
+      "responseDrafting": {
+        "snippet": "AI-powered assistance for tailored customer replies and response drafting",
+        "url": "https://www.glean.com/agents/servicenow"
+      }
+    },
+    "google": {
+      "knowledgeArticles": {
+        "snippet": "The ServiceNow connector supports knowledge base entities that can be filtered by catalog IDs",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "serviceCatalog": {
+        "snippet": "You can filter your knowledge base entities by catalog IDs, which lets you selectively ingest only those catalog entities",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "tickets": {
+        "snippet": "The connector enables two primary write operations: Create a new incident record and Update an existing incident in ServiceNow",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "realTimeSync": {
+        "snippet": "The connector supports real-time sync, which requires enabling the toggle and providing a client secret value used to verify ServiceNow webhook events",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "catalogIdFiltering": {
+        "snippet": "You can filter your knowledge base entities by catalog IDs, which lets you selectively ingest only those catalog entities whose catalogSysId matches the filter",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "urlCustomization": {
+        "snippet": "The ServiceNow connector automatically fetches the url_suffix parameter for your service portal when you grant the connector access to the required ServiceNow tables",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      },
+      "queryTimeEnforcement": {
+        "snippet": "The ServiceNow connector uses restrictive access control for the incident entity to enhance security, ensuring that end users can only view incidents with which they are directly associated",
+        "url": "https://docs.cloud.google.com/agentspace/docs/connect-servicenow"
+      }
+    },
+    "microsoft": {
+      "knowledgeArticles": {
+        "snippet": "The connector indexes all types of knowledge articles and enables Copilot experiences. It supports indexing content from custom or default knowledge article templates, such as FAQs, How-to, What Is, or KCS article templates. Comments and attachments on KB articles are also indexed",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview"
+      },
+      "serviceCatalog": {
+        "snippet": "The connector indexes 15+ default properties from ServiceNow catalogs including Name, Description, Category, Price, Vendor, Model, Delivery Time, and SysTags",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "tickets": {
+        "snippet": "The connector indexes ticket records from the task table and its child tables, such as incident, problem, and change_request. However, attachments and comments are NOT indexed",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-overview"
+      },
+      "oauth": {
+        "snippet": "OAuth 2.0 authentication is supported with recommended configuration: Refresh Token Lifespan of 31,536,000 seconds (1 year) and Access Token Lifespan of 43,200 seconds (12 hours)",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "entraId": {
+        "snippet": "Microsoft Entra ID OpenID Connect is supported. Setup requires registering application in Microsoft Entra ID, creating client secret, and retrieving Service Principal Object Identifier via PowerShell",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "advancedUserCriteria": {
+        "snippet": "The connector supports advanced script-based user criteria permissions in Advanced Flow mode (not enabled by default)",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview"
+      },
+      "categoryLevelPermissions": {
+        "snippet": "LIMITATION: Category-level permissions are NOT currently read by the connector. Only catalog item-level user criteria are considered",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "permissionSyncFrequency": {
+        "snippet": "LIMITATION: Incremental crawl only updates changed content, NOT permissions. Identity/permission updates ONLY occur during full crawls",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "incrementalSync": {
+        "snippet": "Incremental Crawl runs every 15 minutes by default and updates changed content only. However, incremental crawls do NOT update permissions or ACLs",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "customQueryFilters": {
+        "snippet": "The connector supports custom query filters using ServiceNow's encoded query builder. Default filter: active=true^workflow_state=published. Supports logical operators (AND ^, OR |)",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector"
+      },
+      "aclEvaluation": {
+        "snippet": "LIMITATION: The connector doesn't evaluate ACL rules for articles, user criteria, or tables. Only user criteria and role-based permissions are supported",
+        "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview"
+      }
+    }
+  }
+}

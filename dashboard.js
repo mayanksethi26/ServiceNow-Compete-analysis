@@ -1,6 +1,7 @@
 // Global data storage
 let comparisonData = null;
 let historicalData = null;
+let sourcesData = null;
 let currentFilter = 'all';
 
 // Initialize dashboard
@@ -9,7 +10,8 @@ async function initDashboard() {
         // Load data
         await Promise.all([
             loadComparisonData(),
-            loadHistoricalData()
+            loadHistoricalData(),
+            loadSourcesData()
         ]);
 
         // Calculate scores
@@ -51,6 +53,17 @@ async function loadHistoricalData() {
         historicalData = await response.json();
     } catch (error) {
         console.error('Error loading historical data:', error);
+    }
+}
+
+// Load sources data
+async function loadSourcesData() {
+    try {
+        const response = await fetch('comparison-data-with-sources.json');
+        sourcesData = await response.json();
+    } catch (error) {
+        console.error('Error loading sources data:', error);
+        sourcesData = null;
     }
 }
 
@@ -381,9 +394,9 @@ function renderComparisonTable() {
                         <div class="feature-name">${feature.name}</div>
                         <div class="feature-description">${feature.description}</div>
                     </td>
-                    ${renderFeatureCell(feature.glean)}
-                    ${renderFeatureCell(feature.google)}
-                    ${renderFeatureCell(feature.microsoft)}
+                    ${renderFeatureCell(feature.glean, 'glean', featureKey)}
+                    ${renderFeatureCell(feature.google, 'google', featureKey)}
+                    ${renderFeatureCell(feature.microsoft, 'microsoft', featureKey)}
                 </tr>
             `;
         }
@@ -398,7 +411,7 @@ function renderComparisonTable() {
 }
 
 // Render feature cell
-function renderFeatureCell(featureData) {
+function renderFeatureCell(featureData, platform, featureKey) {
     const supportIcon = featureData.score >= 8 ? 'yes' :
                        featureData.score >= 4 ? 'partial' : 'no';
     const supportText = featureData.score >= 8 ? '✓' :
@@ -406,11 +419,37 @@ function renderFeatureCell(featureData) {
     const scoreClass = featureData.score >= 7 ? 'high' :
                       featureData.score >= 4 ? 'medium' : 'low';
 
+    // Get source information if available
+    let sourceTooltip = '';
+    if (sourcesData && sourcesData.sources && sourcesData.sources[platform] && sourcesData.sources[platform][featureKey]) {
+        const source = sourcesData.sources[platform][featureKey];
+        sourceTooltip = `
+            <span class="source-icon">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <div class="source-tooltip">
+                    <div class="tooltip-header">Source</div>
+                    <div class="tooltip-snippet">${source.snippet}</div>
+                    <a href="${source.url}" target="_blank" class="tooltip-link">
+                        View documentation
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
+            </span>
+        `;
+    }
+
     return `
         <td>
             <div class="support-indicator">
                 <span class="support-icon ${supportIcon}">${supportText}</span>
                 <span class="score-badge ${scoreClass}">${featureData.score}/10</span>
+                ${sourceTooltip}
             </div>
             <div class="support-details">${featureData.details}</div>
         </td>

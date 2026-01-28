@@ -401,6 +401,99 @@ body {
     margin-top: 0.25rem;
 }
 
+/* Source Tooltip */
+.source-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 0.5rem;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    font-size: 0.625rem;
+    cursor: help;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.source-icon:hover {
+    background: var(--glean-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.source-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.source-icon:hover .source-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(-12px);
+}
+
+.source-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--border-color);
+}
+
+.tooltip-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.tooltip-snippet {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+}
+
+.tooltip-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--glean-color);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.tooltip-link:hover {
+    color: var(--text-primary);
+}
+
+.tooltip-link svg {
+    width: 12px;
+    height: 12px;
+}
+
 .score-badge {
     display: inline-block;
     padding: 0.25rem 0.5rem;
