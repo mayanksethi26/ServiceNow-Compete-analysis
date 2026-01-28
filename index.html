@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceNow Connector Comparison Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 3v18m6-18v18M3 9h18M3 15h18"></path>
+                    </svg>
+                    ServiceNow Connector Comparison
+                </h1>
+                <p class="subtitle">Comprehensive analysis of Glean, Google Agentspace, and Microsoft Copilot connectors</p>
+                <div class="header-meta">
+                    <span class="badge" id="lastUpdated">Loading...</span>
+                    <span class="badge" id="versionBadge">Loading...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary Cards -->
+        <section class="summary-section">
+            <div class="summary-cards">
+                <div class="summary-card glean-card">
+                    <div class="card-header">
+                        <h3>Glean</h3>
+                        <div class="score" id="gleanScore">-</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="strength">
+                            <strong>Strength:</strong> AI & Automation
+                        </div>
+                        <div class="metric">67% faster ticket resolution</div>
+                    </div>
+                </div>
+
+                <div class="summary-card google-card">
+                    <div class="card-header">
+                        <h3>Google Agentspace</h3>
+                        <div class="score" id="googleScore">-</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="strength">
+                            <strong>Strength:</strong> Real-Time Sync
+                        </div>
+                        <div class="metric">Webhook-based instant updates</div>
+                    </div>
+                </div>
+
+                <div class="summary-card microsoft-card">
+                    <div class="card-header">
+                        <h3>Microsoft Copilot</h3>
+                        <div class="score" id="microsoftScore">-</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="strength">
+                            <strong>Strength:</strong> Enterprise Identity
+                        </div>
+                        <div class="metric">Entra ID OIDC integration</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Section -->
+        <section class="charts-section">
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <h3>Overall Score Comparison</h3>
+                    <canvas id="overallChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Category Breakdown</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gap Analysis -->
+        <section class="gaps-section">
+            <h2 class="section-title">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Microsoft Gap Analysis
+            </h2>
+            <div id="gapsContainer" class="gaps-container">
+                <!-- Gaps will be dynamically inserted -->
+            </div>
+        </section>
+
+        <!-- Detailed Feature Comparison -->
+        <section class="features-section">
+            <h2 class="section-title">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 11 12 14 22 4"></polyline>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                Detailed Feature Comparison
+            </h2>
+            <div class="category-filters" id="categoryFilters">
+                <!-- Filters will be dynamically inserted -->
+            </div>
+            <div id="comparisonTable" class="comparison-table-container">
+                <!-- Table will be dynamically inserted -->
+            </div>
+        </section>
+
+        <!-- Historical Trends -->
+        <section class="history-section">
+            <h2 class="section-title">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                Historical Analysis
+            </h2>
+            <div class="history-container">
+                <div class="chart-container full-width">
+                    <h3>Score Trends Over Time</h3>
+                    <canvas id="trendChart"></canvas>
+                </div>
+                <div class="changelog-container">
+                    <h3>Change Log</h3>
+                    <div id="changeLogContainer" class="changelog-list">
+                        <!-- Change log will be dynamically inserted -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Dashboard automatically updates with latest data on each launch</p>
+            <p class="footer-links">
+                Sources:
+                <a href="https://docs.glean.com/connectors/native/servicenow/about" target="_blank">Glean Docs</a> |
+                <a href="https://docs.cloud.google.com/agentspace/docs/connect-servicenow" target="_blank">Google Docs</a> |
+                <a href="https://learn.microsoft.com/en-us/microsoftsearch/" target="_blank">Microsoft Learn</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

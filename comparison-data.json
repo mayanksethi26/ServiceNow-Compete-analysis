@@ -1,0 +1,677 @@
+{
+  "lastUpdated": "2026-01-28",
+  "version": "1.0.0",
+  "platforms": {
+    "glean": {
+      "name": "Glean",
+      "color": "#6366f1"
+    },
+    "google": {
+      "name": "Google Agentspace",
+      "color": "#34a853"
+    },
+    "microsoft": {
+      "name": "Microsoft Copilot",
+      "color": "#0078d4"
+    }
+  },
+  "categories": {
+    "dataTypes": {
+      "name": "Data Types & Coverage",
+      "weight": 25,
+      "features": {
+        "knowledgeArticles": {
+          "name": "Knowledge Articles",
+          "description": "Index and search knowledge base articles",
+          "glean": {
+            "supported": true,
+            "details": "Full support with metadata, custom fields, workflow states",
+            "score": 10
+          },
+          "google": {
+            "supported": true,
+            "details": "Supported with catalog ID filtering",
+            "score": 9
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "All article types, comments, attachments, multiple templates (FAQ, How-to, What Is, KCS)",
+            "score": 10
+          }
+        },
+        "serviceCatalog": {
+          "name": "Service Catalog Items",
+          "description": "Index and discover catalog items",
+          "glean": {
+            "supported": true,
+            "details": "Full catalog support with categories",
+            "score": 10
+          },
+          "google": {
+            "supported": true,
+            "details": "Supported with catalog ID filtering",
+            "score": 9
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "15+ indexed properties including price, vendor, model, delivery time, taxonomy",
+            "score": 10
+          }
+        },
+        "tickets": {
+          "name": "Tickets/Incidents",
+          "description": "Index and search ticket records",
+          "glean": {
+            "supported": true,
+            "details": "ITSM incidents with full metadata (optional with additional permissions)",
+            "score": 9
+          },
+          "google": {
+            "supported": true,
+            "details": "Create and update incidents via API",
+            "score": 7
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Task table and child tables (incident, problem, change_request), but attachments and comments NOT indexed",
+            "score": 7
+          }
+        },
+        "newsArticles": {
+          "name": "News Articles",
+          "description": "Content publishing integration",
+          "glean": {
+            "supported": true,
+            "details": "Via Content Publishing with titles, headlines, content, publish dates",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not supported",
+            "score": 0
+          }
+        },
+        "businessApplications": {
+          "name": "APM/SPM Projects",
+          "description": "Business applications, demands, epics, projects",
+          "glean": {
+            "supported": true,
+            "details": "APM Business Applications and SPM demands, epics, and projects",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not supported",
+            "score": 0
+          }
+        }
+      }
+    },
+    "authentication": {
+      "name": "Authentication & Security",
+      "weight": 15,
+      "features": {
+        "oauth": {
+          "name": "OAuth 2.0 Support",
+          "description": "Modern OAuth authentication",
+          "glean": {
+            "supported": true,
+            "details": "OAuth Application with dedicated Service Account",
+            "score": 10
+          },
+          "google": {
+            "supported": true,
+            "details": "API v2+ support with standard OAuth",
+            "score": 9
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "OAuth 2.0 with 1-year refresh token, 12-hour access token",
+            "score": 10
+          }
+        },
+        "basicAuth": {
+          "name": "Basic Authentication",
+          "description": "Username/password authentication",
+          "glean": {
+            "supported": false,
+            "details": "Not supported - OAuth only",
+            "score": 5
+          },
+          "google": {
+            "supported": true,
+            "details": "Standard basic auth supported",
+            "score": 8
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Basic auth with catalog role",
+            "score": 8
+          }
+        },
+        "entraId": {
+          "name": "Microsoft Entra ID (Azure AD) OpenID Connect",
+          "description": "Enterprise identity integration",
+          "glean": {
+            "supported": false,
+            "details": "Not supported",
+            "score": 0
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Full OIDC integration with Service Principal mapping",
+            "score": 10
+          }
+        }
+      }
+    },
+    "permissions": {
+      "name": "Permissions & Access Control",
+      "weight": 20,
+      "features": {
+        "queryTimeEnforcement": {
+          "name": "Query-Time Permission Enforcement",
+          "description": "Enforce permissions dynamically at query time",
+          "glean": {
+            "supported": true,
+            "details": "Strictly enforces permissions at query time, respects user criteria",
+            "score": 10
+          },
+          "google": {
+            "supported": true,
+            "details": "Restrictive access control for incidents, users only see associated incidents",
+            "score": 9
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "ACLs and user criteria-based permissions, role-based permissions",
+            "score": 9
+          }
+        },
+        "advancedUserCriteria": {
+          "name": "Advanced Script-Based User Criteria",
+          "description": "Support for complex permission scripts",
+          "glean": {
+            "supported": true,
+            "details": "Full support via user_criteria_admin role",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Advanced flow available for knowledge and catalog (not default)",
+            "score": 8
+          }
+        },
+        "categoryLevelPermissions": {
+          "name": "Category-Level Permissions",
+          "description": "Permission inheritance from categories",
+          "glean": {
+            "supported": true,
+            "details": "Full support for category permissions",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Category-level permissions NOT currently read (only item-level)",
+            "score": 3
+          }
+        },
+        "knowledgeBaseAndArticleLevel": {
+          "name": "KB-Level + Article-Level Permissions",
+          "description": "Dual-layer permission evaluation",
+          "glean": {
+            "supported": true,
+            "details": "Evaluates all permission layers",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Limited preview - evaluates both KB and article level",
+            "score": 7
+          }
+        },
+        "permissionSyncFrequency": {
+          "name": "Permission Sync in Incremental Crawls",
+          "description": "Update permissions without full recrawl",
+          "glean": {
+            "supported": true,
+            "details": "Query-time enforcement means always current",
+            "score": 10
+          },
+          "google": {
+            "supported": true,
+            "details": "Real-time sync capability with webhooks",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Incremental crawls do NOT update permissions - only full crawls do",
+            "score": 2
+          }
+        }
+      }
+    },
+    "sync": {
+      "name": "Sync & Real-Time Capabilities",
+      "weight": 15,
+      "features": {
+        "realTimeSync": {
+          "name": "Real-Time Synchronization",
+          "description": "Immediate updates via webhooks/events",
+          "glean": {
+            "supported": false,
+            "details": "Not explicitly documented",
+            "score": 0
+          },
+          "google": {
+            "supported": true,
+            "details": "Real-time sync with webhook events and client secret verification",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "15-minute minimum delay for incremental crawl",
+            "score": 3
+          }
+        },
+        "incrementalSync": {
+          "name": "Incremental Sync",
+          "description": "Update only changed content",
+          "glean": {
+            "supported": true,
+            "details": "Implied through API usage",
+            "score": 8
+          },
+          "google": {
+            "supported": true,
+            "details": "Optimized data ingestion with automatic change detection",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Every 15 minutes default, but doesn't update permissions",
+            "score": 6
+          }
+        },
+        "customSyncSchedule": {
+          "name": "Custom Sync Schedule",
+          "description": "Configurable sync frequency",
+          "glean": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "google": {
+            "supported": true,
+            "details": "Separate schedules for full and incremental sync, custom options available",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Customizable full and incremental crawl intervals",
+            "score": 9
+          }
+        }
+      }
+    },
+    "filtering": {
+      "name": "Filtering & Customization",
+      "weight": 10,
+      "features": {
+        "catalogIdFiltering": {
+          "name": "Catalog ID Filtering",
+          "description": "Selective ingestion by catalog",
+          "glean": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "google": {
+            "supported": true,
+            "details": "Filter knowledge base entities by catalog IDs",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Custom encoded query strings with logical operators",
+            "score": 9
+          }
+        },
+        "customQueryFilters": {
+          "name": "Custom Query Filters",
+          "description": "Advanced filtering with query builders",
+          "glean": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "ServiceNow encoded query builder support (e.g., active=true^workflow_state=published)",
+            "score": 10
+          }
+        },
+        "urlCustomization": {
+          "name": "URL Customization",
+          "description": "Customize result link formats",
+          "glean": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "google": {
+            "supported": true,
+            "details": "Automatic url_suffix fetching for service portal",
+            "score": 8
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "AccessUrl customization with conditional rules",
+            "score": 9
+          }
+        }
+      }
+    },
+    "setupExperience": {
+      "name": "Setup & Ease of Use",
+      "weight": 10,
+      "features": {
+        "setupComplexity": {
+          "name": "Setup Complexity",
+          "description": "Ease of initial configuration",
+          "glean": {
+            "supported": true,
+            "details": "Moderate - Requires Service Account + OAuth Application setup",
+            "score": 7
+          },
+          "google": {
+            "supported": true,
+            "details": "Simple - Standard connector configuration",
+            "score": 8
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Moderate to Complex - OAuth requires ServiceNow admin coordination, Entra ID OIDC requires PowerShell",
+            "score": 6
+          }
+        },
+        "documentation": {
+          "name": "Documentation Quality",
+          "description": "Completeness and clarity of docs",
+          "glean": {
+            "supported": true,
+            "details": "Comprehensive with detailed role requirements",
+            "score": 9
+          },
+          "google": {
+            "supported": true,
+            "details": "Clear but minimal details on advanced features",
+            "score": 7
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Extensive Microsoft Learn documentation with step-by-step guides",
+            "score": 10
+          }
+        },
+        "roleBasedSetup": {
+          "name": "Role-Based Setup Guidance",
+          "description": "Clear guidance for different admin roles",
+          "glean": {
+            "supported": true,
+            "details": "Specific roles documented (knowledge_admin, catalog_admin, etc.)",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not detailed in documentation",
+            "score": 5
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Clear roles: ServiceNow Admin, Network Admin, M365 Admin",
+            "score": 9
+          }
+        }
+      }
+    },
+    "aiAutomation": {
+      "name": "AI & Automation Features",
+      "weight": 20,
+      "features": {
+        "aiAgents": {
+          "name": "AI Agents",
+          "description": "Pre-built or configurable AI agents",
+          "glean": {
+            "supported": true,
+            "details": "Configurable AI agents with Agent Builder, custom agents for specific tasks",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Agentspace branding but limited ServiceNow-specific agent features documented",
+            "score": 3
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Agent Builder integration (Copilot Studio, M365 Agents Toolkit)",
+            "score": 8
+          }
+        },
+        "ticketSummarization": {
+          "name": "Ticket Summarization",
+          "description": "Auto-summarize ticket context",
+          "glean": {
+            "supported": true,
+            "details": "Instant case overviews with recommended actions",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not documented as built-in feature",
+            "score": 0
+          }
+        },
+        "responseDrafting": {
+          "name": "AI-Powered Response Drafting",
+          "description": "Auto-generate customer responses",
+          "glean": {
+            "supported": true,
+            "details": "AI-powered tailored customer reply assistance",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not documented as built-in feature",
+            "score": 0
+          }
+        },
+        "nextStepRecommendations": {
+          "name": "Next Step Recommendations",
+          "description": "Suggest actions for ticket resolution",
+          "glean": {
+            "supported": true,
+            "details": "Suggested next steps upon opening tickets",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not documented as built-in feature",
+            "score": 0
+          }
+        },
+        "relatedContentSuggestions": {
+          "name": "Related Content Surfacing",
+          "description": "Auto-suggest related cases, articles, resources",
+          "glean": {
+            "supported": true,
+            "details": "Auto-suggested related cases, knowledge articles, cross-org content",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Search capability but not proactive suggestions",
+            "score": 3
+          }
+        },
+        "knowledgeArticleGeneration": {
+          "name": "Knowledge Article Generation",
+          "description": "Auto-create KB articles from tickets",
+          "glean": {
+            "supported": true,
+            "details": "Creating knowledge base articles from tickets",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 0
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Not documented as built-in feature",
+            "score": 0
+          }
+        },
+        "incidentCreationUpdate": {
+          "name": "Incident Creation & Updates",
+          "description": "Programmatic ticket management",
+          "glean": {
+            "supported": false,
+            "details": "Read-only access documented",
+            "score": 3
+          },
+          "google": {
+            "supported": true,
+            "details": "Create and update incidents via API",
+            "score": 10
+          },
+          "microsoft": {
+            "supported": false,
+            "details": "Read-only connector",
+            "score": 0
+          }
+        }
+      }
+    },
+    "limitations": {
+      "name": "Known Limitations",
+      "weight": 5,
+      "inverted": true,
+      "features": {
+        "attachmentsCommentsIndexing": {
+          "name": "Attachments & Comments Not Indexed",
+          "description": "Unable to search ticket attachments/comments",
+          "glean": {
+            "supported": false,
+            "details": "Full support for attachments and comments",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 5
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Tickets: Attachments & comments NOT indexed. Knowledge: Attachments ARE indexed",
+            "score": 3
+          }
+        },
+        "immutableProperties": {
+          "name": "Immutable Property Schema",
+          "description": "Cannot modify searchable properties post-setup",
+          "glean": {
+            "supported": false,
+            "details": "No such limitation documented",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented",
+            "score": 5
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Property schema immutable after connection creation",
+            "score": 2
+          }
+        },
+        "aclEvaluation": {
+          "name": "Limited ACL Rule Evaluation",
+          "description": "Doesn't read ACL rules comprehensively",
+          "glean": {
+            "supported": false,
+            "details": "Full ACL support via query-time enforcement",
+            "score": 10
+          },
+          "google": {
+            "supported": false,
+            "details": "Not documented as limitation",
+            "score": 5
+          },
+          "microsoft": {
+            "supported": true,
+            "details": "Doesn't evaluate ACL rules for articles, user criteria, or tables",
+            "score": 3
+          }
+        }
+      }
+    }
+  }
+}
