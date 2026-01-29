@@ -99,7 +99,7 @@
     },
     {
       "date": "2026-01-29",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "summary": "Automated daily update - 2026-01-29",
       "scores": {
         "glean": {
@@ -129,9 +129,9 @@
           }
         },
         "microsoft": {
-          "overall": 58.53571428571428,
+          "overall": 57.70238095238095,
           "byCategory": {
-            "dataTypes": 13.5,
+            "dataTypes": 12.5,
             "authentication": 14.0,
             "permissions": 11.6,
             "sync": 9.0,
@@ -197,7 +197,7 @@
   "changeLog": [
     {
       "date": "2026-01-29",
-      "description": "Score changes detected: Glean: -9.4, Google: -1.7, Microsoft: -1.8"
+      "description": "Score changes detected: Glean: -9.4, Google: -1.7, Microsoft: -2.6"
     }
   ]
 }

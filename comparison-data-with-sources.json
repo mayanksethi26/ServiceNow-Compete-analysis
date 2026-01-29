@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-01-28",
-  "version": "1.0.1",
+  "lastUpdated": "2026-01-29",
+  "version": "1.1.0",
   "platforms": {
     "glean": {
       "name": "Glean",
@@ -97,7 +97,7 @@
     },
     "microsoft": {
       "knowledgeArticles": {
-        "snippet": "The connector indexes all types of knowledge articles and enables Copilot experiences. It supports indexing content from custom or default knowledge article templates, such as FAQs, How-to, What Is, or KCS article templates. Comments and attachments on KB articles are also indexed",
+        "snippet": "The connector indexes all types of knowledge articles and enables Copilot experiences. It supports indexing content from custom or default knowledge article templates, such as FAQs, How-to, What Is, or KCS article templates. Comments and attachments on KB articles are also indexed. LIMITATION: The connector doesn't support indexing of knowledge blocks and evaluation of their user criteria",
         "url": "https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview"
       },
       "serviceCatalog": {

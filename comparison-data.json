@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-01-29",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "platforms": {
     "glean": {
       "name": "Glean",
@@ -35,8 +35,8 @@
           },
           "microsoft": {
             "supported": true,
-            "details": "All article types, comments, attachments, multiple templates (FAQ, How-to, What Is, KCS)",
-            "score": 10
+            "details": "All article types, comments, attachments, multiple templates (FAQ, How-to, What Is, KCS). LIMITATION: Does NOT support indexing knowledge blocks or evaluation of their user criteria",
+            "score": 8
           }
         },
         "serviceCatalog": {

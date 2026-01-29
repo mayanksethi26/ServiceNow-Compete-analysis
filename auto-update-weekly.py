@@ -13,17 +13,43 @@ import os
 
 # Documentation URLs to monitor
 DOCS_TO_MONITOR = {
-    'microsoft': [
-        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview',
-        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-connector',
-        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-overview'
-    ],
     'glean': [
+        'https://docs.glean.com/connectors/native/servicenow/home',
         'https://docs.glean.com/connectors/native/servicenow/about',
+        'https://docs.glean.com/connectors/native/servicenow/setup',
+        'https://docs.glean.com/connectors/native/servicenow/setup-advanced',
+        'https://docs.glean.com/connectors/native/servicenow/servicenow-custom-role',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-1',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-2',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-3',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-4',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-5',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-6',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-7',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-8',
+        'https://docs.glean.com/troubleshooting/error-codes/servicenow/servicenow-9',
         'https://www.glean.com/agents/servicenow'
     ],
     'google': [
-        'https://cloud.google.com/agentspace/docs/connect-servicenow'
+        'https://docs.cloud.google.com/integration-connectors/docs/connectors/servicenow/configure',
+        'https://docs.cloud.google.com/gemini/enterprise/docs/servicenow',
+        'https://docs.cloud.google.com/gemini/enterprise/docs/servicenow/set-up-data-store',
+        'https://docs.cloud.google.com/gemini/enterprise/docs/servicenow/third-party-config'
+    ],
+    'microsoft': [
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-overview',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-admin-setup',
+        'https://learn.microsoft.com/en-us/microsoftsearch/granting-table-access-servicenow',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-deployment',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-knowledge-troubleshooting',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-overview',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-admin-setup',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-deployment',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-catalog-troubleshooting',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-overview',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-admin-setup',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-deployment',
+        'https://learn.microsoft.com/en-us/microsoftsearch/servicenow-tickets-troubleshooting'
     ]
 }
 
