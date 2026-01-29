@@ -495,11 +495,54 @@ function renderHistoricalAnalysis() {
     renderChangeLog();
 }
 
+// Filter snapshots to weekly intervals
+function filterToWeeklySnapshots(snapshots) {
+    if (snapshots.length <= 1) return snapshots;
+
+    // Keep first snapshot as baseline
+    const weeklySnapshots = [snapshots[0]];
+
+    // Group remaining snapshots by week
+    const snapshotsByWeek = {};
+
+    for (let i = 1; i < snapshots.length; i++) {
+        const snapshot = snapshots[i];
+        const date = new Date(snapshot.date);
+
+        // Get ISO week number
+        const weekNumber = getWeekNumber(date);
+        const weekKey = `${date.getFullYear()}-W${weekNumber}`;
+
+        // Keep latest snapshot for each week
+        if (!snapshotsByWeek[weekKey] || new Date(snapshot.date) > new Date(snapshotsByWeek[weekKey].date)) {
+            snapshotsByWeek[weekKey] = snapshot;
+        }
+    }
+
+    // Add weekly snapshots in chronological order
+    Object.values(snapshotsByWeek)
+        .sort((a, b) => new Date(a.date) - new Date(b.date))
+        .forEach(snapshot => weeklySnapshots.push(snapshot));
+
+    return weeklySnapshots;
+}
+
+// Get ISO week number
+function getWeekNumber(date) {
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+}
+
 // Render trend chart
 function renderTrendChart() {
     const ctx = document.getElementById('trendChart').getContext('2d');
 
-    const snapshots = historicalData.snapshots;
+    // Filter to weekly snapshots
+    const allSnapshots = historicalData.snapshots;
+    const snapshots = filterToWeeklySnapshots(allSnapshots);
     const dates = snapshots.map(s => s.date);
 
     new Chart(ctx, {
