@@ -499,13 +499,10 @@ function renderHistoricalAnalysis() {
 function filterToWeeklySnapshots(snapshots) {
     if (snapshots.length <= 1) return snapshots;
 
-    // Keep first snapshot as baseline
-    const weeklySnapshots = [snapshots[0]];
-
-    // Group remaining snapshots by week
+    // Group all snapshots by week (including the first one)
     const snapshotsByWeek = {};
 
-    for (let i = 1; i < snapshots.length; i++) {
+    for (let i = 0; i < snapshots.length; i++) {
         const snapshot = snapshots[i];
         const date = new Date(snapshot.date);
 
@@ -519,12 +516,9 @@ function filterToWeeklySnapshots(snapshots) {
         }
     }
 
-    // Add weekly snapshots in chronological order
-    Object.values(snapshotsByWeek)
-        .sort((a, b) => new Date(a.date) - new Date(b.date))
-        .forEach(snapshot => weeklySnapshots.push(snapshot));
-
-    return weeklySnapshots;
+    // Return weekly snapshots in chronological order
+    return Object.values(snapshotsByWeek)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
 }
 
 // Get ISO week number
