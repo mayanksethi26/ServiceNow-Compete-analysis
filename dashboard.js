@@ -545,7 +545,11 @@ function renderChangeLog() {
     if (!changes || changes.length === 0) {
         container.innerHTML = `
             <div class="empty-state">
-                No changes logged yet. The dashboard will track changes on subsequent launches.
+                <strong>No changes logged yet.</strong><br><br>
+                To update historical data, run:<br>
+                <code style="background: var(--bg-tertiary); padding: 4px 8px; border-radius: 4px; display: inline-block; margin: 4px 0;">update-history.bat</code> (Windows) or<br>
+                <code style="background: var(--bg-tertiary); padding: 4px 8px; border-radius: 4px; display: inline-block; margin: 4px 0;">python update-history.py</code> (Mac/Linux)<br><br>
+                Then commit and push the changes.
             </div>
         `;
         return;

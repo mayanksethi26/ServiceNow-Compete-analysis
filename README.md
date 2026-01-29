@@ -140,6 +140,30 @@ The dashboard evaluates connectors across 7 weighted categories:
 
 ## Updating the Dashboard
 
+### Automatic Historical Updates
+
+**IMPORTANT**: Browsers cannot write to local files, so historical tracking requires running a script before pushing updates.
+
+**Run this script daily or after updating comparison data:**
+
+```bash
+# Windows
+update-history.bat
+
+# Mac/Linux or if you have Python
+python update-history.py
+
+# Or with Node.js
+node update-history.js
+```
+
+This script will:
+- ✅ Calculate current scores
+- ✅ Create new snapshot if date changed
+- ✅ Log score changes to change log
+- ✅ Update historical-log.json
+- ✅ Optionally commit and push changes
+
 ### Manual Data Updates
 
 1. **Edit comparison-data.json**
@@ -147,10 +171,13 @@ The dashboard evaluates connectors across 7 weighted categories:
    - Increment version number
    - Update lastUpdated date
 
-2. **Historical tracking is automatic**
-   - On each launch with a new date, the dashboard detects changes
-   - Creates new snapshot in historical-log.json
-   - Logs significant score changes
+2. **Run update script**
+   - Execute `update-history.bat` (Windows) or `update-history.py` (Mac/Linux)
+   - This creates new historical snapshot
+
+3. **Push changes**
+   - `git add . && git commit -m "Update analysis" && git push`
+   - Dashboard updates in 1-2 minutes
 
 ### Adding New Features
 

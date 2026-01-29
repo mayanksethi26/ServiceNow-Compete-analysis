@@ -96,7 +96,108 @@
         }
       ],
       "notes": "Glean demonstrates strongest AI/automation capabilities with 67% faster ticket resolution. Google leads in real-time sync. Microsoft excels in documentation and enterprise identity integration but needs significant AI feature development."
+    },
+    {
+      "date": "2026-01-29",
+      "version": "1.0.0",
+      "summary": "Automated daily update - 2026-01-29",
+      "scores": {
+        "glean": {
+          "overall": 73.05555555555556,
+          "byCategory": {
+            "dataTypes": 24.5,
+            "authentication": 7.5,
+            "permissions": 20.0,
+            "sync": 4.0,
+            "filtering": 0.0,
+            "setupExperience": 8.666666666666668,
+            "aiAutomation": 18.0,
+            "limitations": 5.0
+          }
+        },
+        "google": {
+          "overall": 52.06746031746031,
+          "byCategory": {
+            "dataTypes": 12.5,
+            "authentication": 8.5,
+            "permissions": 7.6,
+            "sync": 15.0,
+            "filtering": 6.0,
+            "setupExperience": 6.666666666666666,
+            "aiAutomation": 3.7142857142857144,
+            "limitations": 2.5
+          }
+        },
+        "microsoft": {
+          "overall": 58.53571428571428,
+          "byCategory": {
+            "dataTypes": 13.5,
+            "authentication": 14.0,
+            "permissions": 11.6,
+            "sync": 9.0,
+            "filtering": 9.333333333333334,
+            "setupExperience": 8.333333333333334,
+            "aiAutomation": 3.142857142857143,
+            "limitations": 1.3333333333333333
+          }
+        }
+      },
+      "keyGaps": [
+        {
+          "category": "AI & Automation",
+          "gap": "Microsoft lacks AI agents, ticket summarization, response drafting, and knowledge article generation - all available in Glean",
+          "impact": "high",
+          "priority": 1
+        },
+        {
+          "category": "Permissions",
+          "gap": "Microsoft incremental crawls don't update permissions (only full crawls do), while Glean enforces query-time and Google supports real-time sync",
+          "impact": "high",
+          "priority": 2
+        },
+        {
+          "category": "Data Coverage",
+          "gap": "Microsoft doesn't support News Articles or APM/SPM Projects that Glean offers",
+          "impact": "medium",
+          "priority": 3
+        },
+        {
+          "category": "Permissions",
+          "gap": "Microsoft doesn't read category-level permissions (only item-level), while Glean supports full category permissions",
+          "impact": "high",
+          "priority": 4
+        },
+        {
+          "category": "Real-Time Sync",
+          "gap": "Microsoft has 15-minute minimum delay vs Google's real-time webhook sync",
+          "impact": "medium",
+          "priority": 5
+        },
+        {
+          "category": "Tickets",
+          "gap": "Microsoft Tickets connector doesn't index attachments and comments, while Glean supports full metadata",
+          "impact": "medium",
+          "priority": 6
+        },
+        {
+          "category": "ACL Evaluation",
+          "gap": "Microsoft doesn't evaluate ACL rules comprehensively, while Glean has full ACL support via query-time enforcement",
+          "impact": "high",
+          "priority": 7
+        },
+        {
+          "category": "Incident Management",
+          "gap": "Microsoft connectors are read-only, while Google allows creating and updating incidents programmatically",
+          "impact": "low",
+          "priority": 8
+        }
+      ]
     }
   ],
-  "changeLog": []
+  "changeLog": [
+    {
+      "date": "2026-01-29",
+      "description": "Score changes detected: Glean: -9.4, Google: -1.7, Microsoft: -1.8"
+    }
+  ]
 }
