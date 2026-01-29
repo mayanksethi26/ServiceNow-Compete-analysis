@@ -109,11 +109,16 @@ if (Math.abs(gleanChange) > 0.5 || Math.abs(googleChange) > 0.5 || Math.abs(micr
     console.log(`  → No significant score changes (< 0.5 points)`);
 }
 
-// Save updated historical data
+// Update lastUpdated in comparison data
+comparisonData.lastUpdated = today;
+
+// Save updated files
 fs.writeFileSync('historical-log.json', JSON.stringify(historicalData, null, 2));
+fs.writeFileSync('comparison-data.json', JSON.stringify(comparisonData, null, 2));
 
 console.log(`✓ Historical data updated successfully!`);
 console.log(`  New snapshot: ${today}`);
+console.log(`  Last updated date: ${today}`);
 console.log(`  Scores: Glean ${currentScores.glean.overall.toFixed(1)}, Google ${currentScores.google.overall.toFixed(1)}, Microsoft ${currentScores.microsoft.overall.toFixed(1)}`);
 
 if (gleanChange !== 0 || googleChange !== 0 || microsoftChange !== 0) {
@@ -121,6 +126,6 @@ if (gleanChange !== 0 || googleChange !== 0 || microsoftChange !== 0) {
 }
 
 console.log(`\nNext steps:`);
-console.log(`  1. Review the updated historical-log.json`);
-console.log(`  2. Commit: git add historical-log.json && git commit -m "Update historical data for ${today}"`);
+console.log(`  1. Review the updated files (historical-log.json, comparison-data.json)`);
+console.log(`  2. Commit: git add historical-log.json comparison-data.json && git commit -m "Update historical data for ${today}"`);
 console.log(`  3. Push: git push`);

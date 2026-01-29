@@ -115,13 +115,20 @@ def main():
     else:
         print(f"  > No significant score changes (< 0.5 points)")
 
-    # Save updated historical data
+    # Update lastUpdated in comparison data
+    comparison_data['lastUpdated'] = today
+
+    # Save updated files
     with open('historical-log.json', 'w') as f:
         json.dump(historical_data, f, indent=2)
+
+    with open('comparison-data.json', 'w') as f:
+        json.dump(comparison_data, f, indent=2)
 
     print()
     print("[OK] Historical data updated successfully!")
     print(f"  New snapshot: {today}")
+    print(f"  Last updated date: {today}")
     print(f"  Scores: Glean {current_scores['glean']['overall']:.1f}, Google {current_scores['google']['overall']:.1f}, Microsoft {current_scores['microsoft']['overall']:.1f}")
 
     if glean_change != 0 or google_change != 0 or microsoft_change != 0:
@@ -129,8 +136,8 @@ def main():
 
     print()
     print("Next steps:")
-    print("  1. Review the updated historical-log.json")
-    print(f"  2. Commit: git add historical-log.json && git commit -m 'Update historical data for {today}'")
+    print("  1. Review the updated files (historical-log.json, comparison-data.json)")
+    print(f"  2. Commit: git add historical-log.json comparison-data.json && git commit -m 'Update historical data for {today}'")
     print("  3. Push: git push")
 
     # Ask if user wants to commit and push
@@ -138,7 +145,7 @@ def main():
         response = input("\nWould you like to commit and push changes now? (y/n): ")
         if response.lower() == 'y':
             print("\nCommitting changes...")
-            subprocess.run(['git', 'add', 'historical-log.json'], check=True)
+            subprocess.run(['git', 'add', 'historical-log.json', 'comparison-data.json'], check=True)
             subprocess.run(['git', 'commit', '-m', f'Update historical data for {today}'], check=True)
 
             print("\nPushing to GitHub...")

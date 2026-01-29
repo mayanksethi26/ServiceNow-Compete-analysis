@@ -99,7 +99,7 @@
     },
     {
       "date": "2026-01-29",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "summary": "Automated daily update - 2026-01-29",
       "scores": {
         "glean": {
