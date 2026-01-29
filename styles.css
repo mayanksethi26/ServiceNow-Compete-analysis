@@ -88,6 +88,22 @@ body {
     font-weight: 500;
 }
 
+.badge-auto {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    cursor: help;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.85;
+    }
+}
+
 /* Summary Cards */
 .summary-section {
     margin-bottom: 3rem;

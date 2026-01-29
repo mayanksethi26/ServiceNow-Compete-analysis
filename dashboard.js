@@ -2,6 +2,7 @@
 let comparisonData = null;
 let historicalData = null;
 let sourcesData = null;
+let weeklyUpdateLog = null;
 let currentFilter = 'all';
 
 // Initialize dashboard
@@ -11,7 +12,8 @@ async function initDashboard() {
         await Promise.all([
             loadComparisonData(),
             loadHistoricalData(),
-            loadSourcesData()
+            loadSourcesData(),
+            loadWeeklyUpdateLog()
         ]);
 
         // Calculate scores
@@ -64,6 +66,17 @@ async function loadSourcesData() {
     } catch (error) {
         console.error('Error loading sources data:', error);
         sourcesData = null;
+    }
+}
+
+// Load weekly update log
+async function loadWeeklyUpdateLog() {
+    try {
+        const response = await fetch('weekly-update-log.json');
+        weeklyUpdateLog = await response.json();
+    } catch (error) {
+        console.error('Error loading weekly update log:', error);
+        weeklyUpdateLog = null;
     }
 }
 
@@ -122,6 +135,26 @@ function updateMetadata() {
         `Last Updated: ${comparisonData.lastUpdated}`;
     document.getElementById('versionBadge').textContent =
         `Version: ${comparisonData.version}`;
+
+    // Add weekly auto-update badge if we have the log
+    if (weeklyUpdateLog && weeklyUpdateLog.lastCheck) {
+        const autoUpdateBadge = document.getElementById('autoUpdateBadge');
+        if (autoUpdateBadge) {
+            const nextMonday = getNextMonday();
+            autoUpdateBadge.textContent = `🤖 Auto-updates: Weekly (Every Monday)`;
+            autoUpdateBadge.title = `Last auto-check: ${weeklyUpdateLog.lastCheck} | Next: ${nextMonday}`;
+        }
+    }
+}
+
+// Get next Monday date
+function getNextMonday() {
+    const today = new Date();
+    const dayOfWeek = today.getDay();
+    const daysUntilMonday = dayOfWeek === 0 ? 1 : (8 - dayOfWeek);
+    const nextMonday = new Date(today);
+    nextMonday.setDate(today.getDate() + daysUntilMonday);
+    return nextMonday.toISOString().split('T')[0];
 }
 
 // Render summary cards

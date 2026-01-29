@@ -1,0 +1,80 @@
+name: Weekly Documentation Check & Update
+
+on:
+  schedule:
+    # Run every Monday at 9 AM UTC (2 AM PT, 5 AM ET)
+    - cron: '0 9 * * 1'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  check-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Check documentation for changes
+        id: check_docs
+        run: |
+          python auto-update-weekly.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        if: steps.check_docs.outputs.changes_detected == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+      - name: Commit changes
+        if: steps.check_docs.outputs.changes_detected == 'true'
+        run: |
+          git add comparison-data.json historical-log.json weekly-update-log.json
+          git commit -m "🤖 Weekly auto-update: $(date +%Y-%m-%d)" || exit 0
+
+      - name: Push changes
+        if: steps.check_docs.outputs.changes_detected == 'true'
+        run: |
+          git push
+
+      - name: Create issue if changes detected
+        if: steps.check_docs.outputs.changes_detected == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const log = JSON.parse(fs.readFileSync('weekly-update-log.json', 'utf8'));
+            const latestUpdate = log.updates[log.updates.length - 1];
+
+            const body = `## 📊 Weekly Documentation Update\n\n` +
+              `**Date:** ${latestUpdate.date}\n\n` +
+              `### Changes Detected:\n\n` +
+              latestUpdate.changes.map(c => `- **${c.platform}**: ${c.description}`).join('\n') +
+              `\n\n### Updated Scores:\n\n` +
+              `- Glean: ${latestUpdate.scores.glean.toFixed(1)}\n` +
+              `- Google: ${latestUpdate.scores.google.toFixed(1)}\n` +
+              `- Microsoft: ${latestUpdate.scores.microsoft.toFixed(1)}\n\n` +
+              `[View Dashboard](https://mayanksethi26.github.io/ServiceNow-Compete-analysis/)`;
+
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📊 Weekly Update: ${latestUpdate.date}`,
+              body: body,
+              labels: ['automated-update', 'weekly-report']
+            });
+
+      - name: No changes notification
+        if: steps.check_docs.outputs.changes_detected != 'true'
+        run: |
+          echo "✓ No significant documentation changes detected this week"

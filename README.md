@@ -29,6 +29,16 @@ A comprehensive, interactive dashboard comparing ServiceNow connectors from **Gl
 - Fully responsive design
 - Interactive charts powered by Chart.js
 
+### 🤖 **NEW: Fully Automated Weekly Updates**
+- **GitHub Actions checks documentation every Monday at 9 AM UTC**
+- **Automatically detects changes** in official documentation
+- **Updates dashboard** without manual intervention
+- **Creates GitHub issues** when changes are detected
+- **Maintains weekly log** of all checks and updates
+- **Dashboard badge** shows "Auto-updates: Weekly"
+
+**No manual work required - the dashboard updates itself!** See [WEEKLY-AUTOMATION-GUIDE.md](WEEKLY-AUTOMATION-GUIDE.md) for details.
+
 ## Dashboard Structure
 
 ```
