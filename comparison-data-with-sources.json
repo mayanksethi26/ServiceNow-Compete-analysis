@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-01-29",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "platforms": {
     "glean": {
       "name": "Glean",
@@ -63,6 +63,10 @@
       "responseDrafting": {
         "snippet": "AI-powered assistance for tailored customer replies and response drafting",
         "url": "https://www.glean.com/agents/servicenow"
+      },
+      "realTimeSync": {
+        "snippet": "A full crawl or webhook can identify deleted documents – an incremental crawl cannot",
+        "url": "https://docs.glean.com/troubleshooting/error-codes/servicenow"
       }
     },
     "google": {

@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-01-29",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "platforms": {
     "glean": {
       "name": "Glean",
@@ -73,8 +73,8 @@
           },
           "microsoft": {
             "supported": true,
-            "details": "Task table and child tables (incident, problem, change_request), but attachments and comments NOT indexed",
-            "score": 7
+            "details": "Task table and child tables (incident, problem, change_request), but attachments and comments NOT indexed. Field-based permissions only (AssignedTo, OpenedBy, ClosedBy) with NO ACL support",
+            "score": 6
           }
         },
         "newsArticles": {
@@ -289,9 +289,9 @@
           "name": "Real-Time Synchronization",
           "description": "Immediate updates via webhooks/events",
           "glean": {
-            "supported": false,
-            "details": "Not explicitly documented",
-            "score": 0
+            "supported": true,
+            "details": "Webhook support for deleted documents and updates, combined with incremental crawls",
+            "score": 7
           },
           "google": {
             "supported": true,
@@ -426,8 +426,8 @@
           },
           "microsoft": {
             "supported": true,
-            "details": "Moderate to Complex - OAuth requires ServiceNow admin coordination, Entra ID OIDC requires PowerShell",
-            "score": 6
+            "details": "Complex - Requires THREE separate connectors (Knowledge, Catalog, Tickets), each with independent setup, REST API configuration, ACLs, and authentication. OAuth requires ServiceNow admin coordination, Entra ID OIDC requires PowerShell",
+            "score": 4
           }
         },
         "documentation": {

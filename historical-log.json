@@ -99,16 +99,16 @@
     },
     {
       "date": "2026-01-29",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "summary": "Automated daily update - 2026-01-29",
       "scores": {
         "glean": {
-          "overall": 73.05555555555556,
+          "overall": 75.97222222222223,
           "byCategory": {
             "dataTypes": 24.5,
             "authentication": 7.5,
             "permissions": 20.0,
-            "sync": 4.0,
+            "sync": 7.5,
             "filtering": 0.0,
             "setupExperience": 8.666666666666668,
             "aiAutomation": 18.0,
@@ -129,14 +129,14 @@
           }
         },
         "microsoft": {
-          "overall": 57.70238095238095,
+          "overall": 56.73015873015873,
           "byCategory": {
-            "dataTypes": 12.5,
+            "dataTypes": 12.0,
             "authentication": 14.0,
             "permissions": 11.6,
             "sync": 9.0,
             "filtering": 9.333333333333334,
-            "setupExperience": 8.333333333333334,
+            "setupExperience": 7.666666666666667,
             "aiAutomation": 3.142857142857143,
             "limitations": 1.3333333333333333
           }
@@ -197,7 +197,7 @@
   "changeLog": [
     {
       "date": "2026-01-29",
-      "description": "Score changes detected: Glean: -9.4, Google: -1.7, Microsoft: -2.6"
+      "description": "Score changes detected: Glean: -6.5, Google: -1.7, Microsoft: -3.6"
     }
   ]
 }
